@@ -1,0 +1,10 @@
+﻿@page "{id}"
+@model SuccessModel
+<html>
+<body>
+    <h1>Your solution has been submitted</h1>
+    <p>You have successfully submitted the solution source file (@Model.FileSize bytes). We hope it passes <b>Codaxy Production Readiness Scrutiny&trade;</b>.</p>
+    <p>Your unique handle is <span style="font-weight: bold; color: green">@Model.UniqueHandle</span>, and your secret phrase is <span style="font-weight: bold; color: green">@Model.Passphrase</span>. Jot this down or screenshot this page.</p>
+    <a href="/">Submit another solution</a>
+</body>
+</html>

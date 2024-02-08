@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  challengecollector:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__Database=Host=db;Port=5432;Database=challenge_collector;Username=postgres;Password=postgres
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  
+  challengecollector.db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - psqlvolume:/data/postgres
+    restart: unless-stopped
+    
+  challengecollector.pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: codaxy@codaxy.com
+      PGADMIN_DEFAULT_PASSWORD: codaxy
+    volumes:
+      - pgadminvolume:/root/.pgadmin
+    ports:
+      - "8085:80"
+    restart: unless-stopped
+
+volumes:
+  psqlvolume: null
+  pgadminvolume: null 

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  challengecollector:
+    image: ${DOCKER_REGISTRY-}challengecollector
+    build:
+      context: .
+      dockerfile: ChallengeCollector/Dockerfile

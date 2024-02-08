@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+<html>
+<head>
+    <title>File Size Calculator</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        <table cellpadding="5">
+            <tr>
+                <td>
+                    <label for="passphrase">Passphrase<span style="color: red">*</span></label>
+                </td>
+                <td>
+                    <input type="text" name="passphrase" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="fileUpload">ChallengeController.cs<span style="color: red">*</span></label>
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="testFileUpload">ChallengeControllerTests.cs</label>
+                </td>
+                <td>
+                    <input type="file" name="testFileUpload" />
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <input type="submit" value="Submit" />
+        @if (Model.ErrorMessage != null)
+        {
+            <div style="color:red;">@Model.ErrorMessage</div>
+        }
+    </form>
+</body>
+</html>

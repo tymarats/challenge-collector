@@ -1,11 +1,11 @@
 ﻿@page
-@model IndexModel
+@model ReviewModel
 <html>
 <head>
     <title>Challenge Collector</title>
 </head>
 <body>
-    <h4>Submit Solution</h4>
+    <h4>Find My Solution</h4>
     <hr/>
     <form method="post" enctype="multipart/form-data">
         <table cellpadding="5">
@@ -19,22 +19,14 @@
             </tr>
             <tr>
                 <td>
-                    <label for="fileUpload">ChallengeController.cs<span style="color: red">*</span></label>
+                    <label for="handle">Handle<span style="color: red">*</span></label>
                 </td>
                 <td>
-                    <input type="file" name="fileUpload" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="testFileUpload">ChallengeControllerTests.cs</label>
-                </td>
-                <td>
-                    <input type="file" name="testFileUpload" />
+                    <input type="text" name="handle" />
                 </td>
             </tr>
         </table>
-        <hr/>
+        <hr />
         <input type="submit" value="Submit" />
         @if (Model.ErrorMessage != null)
         {

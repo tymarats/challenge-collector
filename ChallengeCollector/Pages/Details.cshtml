@@ -1,14 +1,12 @@
 ﻿@page
-@model ChallengeCollector.Pages.SuperSecretDetailsPageModel
+@model ChallengeCollector.Pages.DetailsModel
 
 @{
-    ViewData["Title"] = "SuperSecretDetailsPage";
+    ViewData["Title"] = "Details Page";
 }
 
-<h1>SuperSecretDetailsPage</h1>
-
 <div>
-    <h4>ChallengeResponse</h4>
+    <h4>Solution <span style="color: green">@Model.ChallengeResponse.UniqueHandle</span></h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -57,7 +55,4 @@
             @Html.DisplayFor(model => model.ChallengeResponse.UniqueHandle)
         </dd>
     </dl>
-</div>
-<div>
-    <a asp-page="./SuperSecretListPage">Back to List</a>
 </div>

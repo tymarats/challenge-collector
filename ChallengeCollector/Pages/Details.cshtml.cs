@@ -11,11 +11,11 @@ using System.Text;
 
 namespace ChallengeCollector.Pages
 {
-    public class SuperSecretDetailsPageModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly ChallengeCollector.ChallengeCollectorDbContext _context;
 
-        public SuperSecretDetailsPageModel(ChallengeCollector.ChallengeCollectorDbContext context)
+        public DetailsModel(ChallengeCollector.ChallengeCollectorDbContext context)
         {
             _context = context;
         }

@@ -19,7 +19,7 @@ namespace ChallengeCollector.Pages
             _context = context;
         }
 
-        public IList<ChallengeResponse> ChallengeResponse { get; set; } = default!;
+        public IList<ChallengeResponseListItem> ChallengeResponse { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
@@ -27,8 +27,26 @@ namespace ChallengeCollector.Pages
             {
                 ChallengeResponse = await _context.ChallengeResponses
                     .OrderByDescending(a => a.CreatedAtUtc)
+                    .Select(a => new ChallengeResponseListItem { 
+                        Id = a.Id,
+                        ResultFileSize = a.ResultFileSize,
+                        TestFileSize = a.TestFileSize,
+                        CreatedAtUtc = a.CreatedAtUtc,
+                        Passphrase = a.Passphrase,
+                        UniqueHandle = a.UniqueHandle,
+                    })
                     .ToListAsync();
             }
         }
+    }
+    
+    public class ChallengeResponseListItem
+    {
+        public required Guid Id { get; set; }
+        public required long ResultFileSize { get; set; }
+        public required long? TestFileSize { get; set; }
+        public required DateTimeOffset CreatedAtUtc { get; set; }
+        public required string Passphrase { get; set; }
+        public required string UniqueHandle { get; set; }
     }
 }
